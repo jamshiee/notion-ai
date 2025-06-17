@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+ --main:#E9EDC9;
+ --text:#FAEDCD;
+ --bold:#CCD5AE;
+ --neutral:#FEFAE0;
+ --dark:#D4A373;
+
+ --notion1:#99ddcc;
+ --noto:#5fd3b6;
+ --notion2:#f6f6f6;
+ --notion3:#111111;
+ --notion4:#bfeadf;
+ --notion5:#73b0d9;
+
+}
+
