@@ -1,14 +1,13 @@
 import RoomProvider from "@/components/RoomProvider";
-import { auth } from "@clerk/nextjs/server";
 
 type LayoutProps = {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>; // <-- 👈 required by Next.js during build
 };
 
 const DocLayout = async ({ children, params }: LayoutProps) => {
-  await auth.protect(); 
-  return <RoomProvider roomId={params.id}>{children}</RoomProvider>;
+  const resolvedParams = await params; // <-- 👈 await here
+  return <RoomProvider roomId={resolvedParams.id}>{children}</RoomProvider>;
 };
 
 export default DocLayout;
