@@ -4,7 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { Toaster } from "sonner";
-import { Inter ,Poppins} from 'next/font/google'
+import { Poppins} from 'next/font/google'
 
 export const metadata: Metadata = {
   title: "NotionAI",
@@ -14,9 +14,7 @@ export const metadata: Metadata = {
   }
 };
 
-const inter = Inter({
-  subsets: ['latin'],
-})
+
 
 const poppins = Poppins({
   weight:["100","200","300","400","500","600","700"]
