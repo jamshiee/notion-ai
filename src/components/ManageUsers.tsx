@@ -1,26 +1,22 @@
 "use client";
+import { removeUserFromRoom } from "@/actions/actions";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
-import { FormEvent, useState, useTransition } from "react";
-import { Button } from "./ui/button";
-import { useRoom } from "@liveblocks/react/suspense";
-import { useRouter } from "next/navigation";
-import { removeUserFromRoom } from "@/actions/actions";
-import { toast } from "sonner";
-import { Input } from "./ui/input";
 import useOwner from "@/lib/useOwner";
 import { useUser } from "@clerk/nextjs";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "../../firebase";
+import { useRoom } from "@liveblocks/react/suspense";
 import { collectionGroup, query, where } from "firebase/firestore";
+import { useState, useTransition } from "react";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { toast } from "sonner";
+import { db } from "../../firebase";
+import { Button } from "./ui/button";
 
 const ManageUsers = () => {
   const { user } = useUser();

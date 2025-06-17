@@ -1,5 +1,10 @@
 "use client"
+import { BotIcon, LanguagesIcon } from "lucide-react";
+import { useState, useTransition } from "react";
+import Markdown from "react-markdown";
+import { toast } from "sonner";
 import * as Y from "yjs";
+import { Button } from "./ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,9 +13,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { useState, useTransition } from "react";
 import {
   Select,
   SelectContent,
@@ -18,9 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { BotIcon, LanguagesIcon } from "lucide-react";
-import { toast } from "sonner";
-import Markdown from "react-markdown";
 
 type Language =
   | "english"
@@ -80,7 +79,7 @@ const TranslateDocument = ({ doc }: { doc: Y.Doc }) => {
           toast.success("Translated Summary successfully");
         }
       } catch (error) {
-        toast.error("Error while Translating");
+        toast.error("Error while Translating" + error);
       }
     });
   };

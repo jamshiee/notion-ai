@@ -1,19 +1,19 @@
 "use client";
-import * as Y from "yjs";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { BotIcon, MessageCircleCode } from "lucide-react";
 import { useState, useTransition } from "react";
-import { BotIcon,  MessageCircleCode } from "lucide-react";
-import { toast } from "sonner";
 import Markdown from "react-markdown";
+import { toast } from "sonner";
+import * as Y from "yjs";
+import { Button } from "./ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "./ui/dialog";
+import { Input } from "./ui/input";
 
 const ChatToDocument = ({ doc }: { doc: Y.Doc }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +49,7 @@ const ChatToDocument = ({ doc }: { doc: Y.Doc }) => {
           toast.success("Qusetion asked successfully!");
         }
       } catch (error) {
-        toast.error("Error while asking question");
+        toast.error("Error while asking question" + error);
       }
     });
   };

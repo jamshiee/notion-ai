@@ -3,25 +3,37 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import { adminDb } from "../../../firebase-admin";
 
+type SessionClaims = {
+  email?: string;
+  fullName?: string;
+  image?: string;
+};
+
 export async function POST(req: NextRequest) {
   auth.protect();
 
   const { sessionClaims } = await auth();
+  const claims = sessionClaims as SessionClaims;
+
   const { room } = await req.json();
 
-  const sessionEmail = sessionClaims?.email! as string;
+  if (typeof claims?.email !== "string") {
+    return NextResponse.json({ message: "Unauthorized: No email found" }, { status: 401 });
+  }
+
+  const sessionEmail = claims.email;
 
   const session = liveblocks.prepareSession(sessionEmail, {
     userInfo: {
-      name: sessionClaims?.fullName as string,
-      email: sessionClaims?.email as string,
-      avatar: sessionClaims?.image as string,
+      name: claims.fullName || "Unknown User",
+      email: sessionEmail,
+      avatar: claims.image || "",
     },
   });
 
   const usersInRoom = await adminDb
     .collectionGroup("rooms")
-    .where("userId", "==", sessionClaims?.email!)
+    .where("userId", "==", sessionEmail)
     .get();
 
   const userInRoom = usersInRoom.docs.find((doc) => doc.id === room);
@@ -33,7 +45,7 @@ export async function POST(req: NextRequest) {
     return new Response(body, { status });
   } else {
     return NextResponse.json(
-      { message: "You Are not in this room" },
+      { message: "You are not in this room" },
       { status: 403 }
     );
   }

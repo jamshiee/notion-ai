@@ -1,20 +1,18 @@
 "use client";
+import { inviteUserToRoom } from "@/actions/actions";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
-import { FormEvent, useState, useTransition } from "react";
-import { Button } from "./ui/button";
 import { useRoom } from "@liveblocks/react/suspense";
 import { useRouter } from "next/navigation";
-import { inviteUserToRoom } from "@/actions/actions";
+import { FormEvent, useState, useTransition } from "react";
 import { toast } from "sonner";
+import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 const InviteUser = () => {
@@ -22,7 +20,6 @@ const InviteUser = () => {
   const [isPending, startTransition] = useTransition();
   const [email, setEmail] = useState("");
   const roomId = useRoom().id;
-  const router = useRouter();
 
   const handleInvite = (e:FormEvent) => {
     e.preventDefault()

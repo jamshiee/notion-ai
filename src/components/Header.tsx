@@ -1,10 +1,10 @@
 "use client";
 import {
-  SignedOut,
-  useUser,
   SignInButton,
   SignedIn,
+  SignedOut,
   UserButton,
+  useUser,
 } from "@clerk/nextjs";
 import Link from "next/link";
 

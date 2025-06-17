@@ -1,15 +1,11 @@
 "use client";
-import { MenuIcon } from "lucide-react";
-import NewDocumentButton from "./NewDocumentButton";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 } from "@/components/ui/sheet";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { useUser } from "@clerk/nextjs";
 import {
   collectionGroup,
@@ -17,8 +13,11 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "../../firebase";
+import { MenuIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../../firebase";
+import NewDocumentButton from "./NewDocumentButton";
 import SidebarOptions from "./SidebarOptions";
 
 interface RoomDocument extends DocumentData {

@@ -1,18 +1,18 @@
 "use client";
+import stringToColor from "@/lib/stringToColor";
+import { BlockNoteEditor } from "@blocknote/core";
+import "@blocknote/core/fonts/inter.css";
+import { useCreateBlockNote } from "@blocknote/react";
+import { BlockNoteView } from "@blocknote/shadcn";
+import "@blocknote/shadcn/style.css";
 import { useRoom, useSelf } from "@liveblocks/react/suspense";
+import { LiveblocksYjsProvider } from "@liveblocks/yjs";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import * as Y from "yjs";
-import { LiveblocksYjsProvider } from "@liveblocks/yjs";
-import { Button } from "./ui/button";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { BlockNoteView } from "@blocknote/shadcn";
-import { BlockNoteEditor } from "@blocknote/core";
-import { useCreateBlockNote } from "@blocknote/react";
-import "@blocknote/core/fonts/inter.css";
-import "@blocknote/shadcn/style.css";
-import stringToColor from "@/lib/stringToColor";
-import TranslateDocument from "./TranslateDocument";
 import ChatToDocument from "./ChatToDocument";
+import TranslateDocument from "./TranslateDocument";
+import { Button } from "./ui/button";
 
 type EditorProps = {
   doc: Y.Doc;

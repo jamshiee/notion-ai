@@ -1,5 +1,5 @@
 import LiveBlocksProvider from "@/components/LiveBlocksProvider"
-import React, { ReactNode } from "react"
+import React from "react"
 
 const layout = ({children}: {children: React.ReactNode}) => {
   return (

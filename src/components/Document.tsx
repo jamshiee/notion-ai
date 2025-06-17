@@ -1,19 +1,19 @@
 "use client";
-import { FormEvent, useEffect, useState, useTransition } from "react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import Editor from "./Editor";
 import useOwner from "@/lib/useOwner";
+import { doc, updateDoc } from "firebase/firestore";
+import { FormEvent, useEffect, useState, useTransition } from "react";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { db } from "../../firebase";
+import Avatar from "./Avatar";
 import DeleteDocument from "./DeleteDocument";
+import Editor from "./Editor";
 import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
-import Avatar from "./Avatar";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 const Document = ({ id }: { id: string }) => {
-  const [data, loading, error] = useDocumentData(doc(db, "documents", id));
+  const [data] = useDocumentData(doc(db, "documents", id));
 
   const [input, setInput] = useState("");
   const [isPending, startTransition] = useTransition();

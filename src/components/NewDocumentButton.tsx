@@ -1,9 +1,9 @@
 "use client";
+import { createNewDoc } from "@/actions/actions";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { Button } from "./ui/button";
-import { createNewDoc } from "@/actions/actions";
-import { useRouter } from "next/navigation";
-import { RedirectToSignIn, useUser } from "@clerk/nextjs";
 
 const NewDocumentButton = () => {
   const [isPending, startTransition] = useTransition();

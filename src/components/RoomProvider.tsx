@@ -3,7 +3,6 @@ import {
   ClientSideSuspense,
   RoomProvider as RoomProviderWrapper,
 } from "@liveblocks/react/suspense";
-import { Loader2 } from "lucide-react";
 import LiveCursorProvider from "./LiveCursorProvider";
 
 const RoomProvider = ({

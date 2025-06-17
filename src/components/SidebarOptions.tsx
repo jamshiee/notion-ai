@@ -1,12 +1,12 @@
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { Button } from "./ui/button";
-import { db } from "../../firebase";
 import { doc } from "firebase/firestore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { db } from "../../firebase";
+import { Button } from "./ui/button";
 
 const SidebarOptions = ({ href, id }: { href: string; id: string }) => {
-  const [data, loading, error] = useDocumentData(doc(db, "documents", id));
+  const [data] = useDocumentData(doc(db, "documents", id));
 const pathname = usePathname();
 const isActive = href.includes(pathname) && pathname !== "/"
 

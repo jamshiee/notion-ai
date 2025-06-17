@@ -1,9 +1,9 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
+import { collectionGroup, query, where } from "firebase/firestore";
 import { ArrowLeftCircleIcon, ArrowUpCircleIcon } from "lucide-react";
-import { useCollection, useDocumentData } from "react-firebase-hooks/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../firebase";
-import { collectionGroup, doc, query, where } from "firebase/firestore";
 
 export default function Home() {
   const { isSignedIn, user } = useUser();
