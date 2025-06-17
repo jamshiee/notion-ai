@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🧠 NotionAi — Next.js AI-Powered Collaborative Docs
 
-First, run the development server:
+<a href="https://ibb.co/B2BKqFTf"><img src="https://i.ibb.co/WvfpgjBH/Screenshot-2025-06-17-130619.png" alt="Screenshot-2025-06-17-130619" border="0"></a>
+
+
+[![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://notion-ai-ten.vercel.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#)
+
+> A Notion-inspired AI-powered collaborative document editor built with Next.js, Clerk, Liveblocks, ShadCN UI, Firestore, and Cloudflare Workers AI.
+
+---
+
+## ✨ Features
+
+- 📝 **Collaborative Editor** – Real-time document collaboration using Liveblocks, including live cursor previews and user presence.
+- 🌍 **AI Translation** – Translate entire documents to different languages using Cloudflare Workers AI.
+- 💬 **Ask Questions** – Ask context-aware questions about your document via Gemini integration.
+- 🔐 **Authentication** – Seamless user sign-in/signup using Clerk.
+- 🎨 **Elegant UI** – Built with [ShadCN UI](https://ui.shadcn.com/) for accessible, customizable components.
+- ☁️ **Serverless AI APIs** – Cloudflare Workers serve AI capabilities efficiently and scalably.
+- 🔥 **Firestore Backend** – Fast and scalable NoSQL database to store user and document data.
+
+---
+
+## 📸 Preview
+
+🔗 [Live Demo on Vercel →](https://notion-ai-ten.vercel.app/)
+
+## [screenshot]
+
+<a href="https://ibb.co/8LsmZ6qd"><img src="https://i.ibb.co/S4y6CRbd/Screenshot-2025-06-17-185707.png" alt="Screenshot-2025-06-17-185707" border="3"></a><!-- Optional: Add a preview screenshot -->
+
+---
+
+## 🧱 Tech Stack
+
+| Feature                  | Tech                                         |
+|--------------------------|----------------------------------------------|
+| Frontend Framework       | [Next.js](https://nextjs.org/)              |
+| UI Components            | [ShadCN UI](https://ui.shadcn.com/)         |
+| Authentication           | [Clerk](https://clerk.dev/)                 |
+| Realtime Collaboration   | [Liveblocks](https://liveblocks.io/)        |
+| Backend Database         | [Firestore](https://firebase.google.com/)   |
+| AI (Translation/Summary) | [Cloudflare Workers AI](https://ai.cloudflare.com/) |
+| AI (Chat Q&A)            | [Gemini Pro](https://ai.google.dev/)        |
+| Deployment               | [Vercel](https://vercel.com/)               |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/jamshiee/notion-ai.git
+cd notion-ai
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup environment variables
+Create a .env.local file in the root with the following:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+# Clerk Auth
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Liveblocks
+NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=your_liveblocks_public_key
+LIVEBLOCKS_PRIVATE_KEY=your_liveblocks_private_key
 
-## Learn More
+# Firestore Admin Key (Base64-encoded JSON service account key)
+FIREBASE_SERVICE_KEY_BASE64=your_base64_encoded_firebase_service_key
 
-To learn more about Next.js, take a look at the following resources:
+# AI Worker Endpoint
+NEXT_PUBLIC_BASE_URL=https://your-cloudflare-worker-url.workers.dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To generate FIREBASE_SERVICE_KEY_BASE64 from your JSON key:
 
-## Deploy on Vercel
+```powershell
+[Convert]::ToBase64String([System.IO.File]::ReadAllBytes("path/to/firebase_service_key.json"))
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤖 AI Integrations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-  **🔁 /translateDocument** - 
+Summarizes a document using Cloudflare's BART model.
+Translates the summary with Meta’s M2M100 multilingual model.
+
+- **❓ /chatToDocument** - 
+Uses Gemini Pro (gemini-2.0-flash-lite) to answer user questions based on markdown JSON content.
+
+## 🔐 Authentication
+- Implemented using Clerk with role-based document access.
+- Users must be logged in to create or collaborate on documents.
+- Firestore stores user metadata and access roles.
+
+## 🤝 Collaboration
+- Powered by Liveblocks
+- Invite users to your document
+- View real-time cursor presence and changes
+
+## 🌐 Deployment
+- Deployed on Vercel at:
+ 🔗 https://notion-ai-ten.vercel.app/
+
+- AI Worker deployed on Cloudflare Workers.
+
