@@ -9,7 +9,6 @@ import {
   DialogTrigger
 } from "@/components/ui/dialog";
 import { useRoom } from "@liveblocks/react/suspense";
-import { useRouter } from "next/navigation";
 import { FormEvent, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";

@@ -12,11 +12,12 @@ import { useEffect, useState } from "react";
 import * as Y from "yjs";
 import ChatToDocument from "./ChatToDocument";
 import TranslateDocument from "./TranslateDocument";
+
 import { Button } from "./ui/button";
 
 type EditorProps = {
   doc: Y.Doc;
-  provider: any;
+  provider: LiveblocksYjsProvider;
   darkMode: boolean;
 };
 

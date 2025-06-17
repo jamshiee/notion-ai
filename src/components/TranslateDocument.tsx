@@ -49,7 +49,7 @@ const languages: Language[] = [
 const TranslateDocument = ({ doc }: { doc: Y.Doc }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState("");
-  const [question, setQuestion] = useState("");
+  // const [question, setQuestion] = useState("");
   const [summary, setSummary] = useState("");
   const [isPending, startTransition] = useTransition();
 
@@ -102,7 +102,7 @@ const TranslateDocument = ({ doc }: { doc: Y.Doc }) => {
 
           <hr className="mt-5" />
 
-          {question && <p className="mt-5 text-gray-500">Q: {question}</p>}
+          {/* {question && <p className="mt-5 text-gray-500">Q: {question}</p>} */}
         </DialogHeader>
 
         {summary && (
